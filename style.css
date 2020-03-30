@@ -1,0 +1,244 @@
+body {
+	padding: 0;
+	margin:0;
+	}
+
+html, body, #mapid {
+    height: 100%;
+	font-family: 'Asap', sans-serif;
+	color: #c8c8d2;
+	}
+	
+a {
+	text-decoration:none;
+	color: #fff;
+	}
+
+a:hover {
+  color : #ffee00;
+}
+
+i {
+	font-size:0.9em;
+	font-style: italic;	
+	}
+	
+strong {
+	font-weight: bold;
+	}
+		
+h1{
+	font-size:2 em;
+	text-transform:uppercase;
+	color: white;
+	}
+	
+h2{
+	font-size:1.2em;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+h3{
+	font-size:0.9em;
+	font-weight: bold;
+	color: white;
+}
+	
+.leaflet-left {
+	left: 0;
+	}	
+	
+#sources {
+	margin-top:50px;
+	font-size:0.8em;
+	}
+
+.Tooltips {
+	font-size:1.1em;
+	padding:4 4px;
+	border:none;
+	font-weight:bold;
+	color: #1d3f73;
+	background-color: white;
+	line-height:0.9em;
+	margin: 55px 0px;
+	white-space: normal;
+	text-align:center;
+	box-shadow: 0 0 5px rgba( 0, 0, 0, 0.5), 0 -1px 0 rgba( 255, 255, 255, 0.4);
+	
+	}
+	
+.epci_Tooltips {
+	font-size:1em;
+	padding:5px;
+	border:none;
+	color: #1d3f73;
+	background-color: rgba(255, 255, 255, 0.6);
+	box-shadow: none;
+	border: none;
+	}
+
+#boiteRecherche{
+	margin-bottom:40px;
+}
+
+	/*Affichage des onglets*/	
+		
+#popup {	display: none;}
+#haut {margin-top:20px;margin-bottom:30px;display: block;}
+#bas {margin-top:30px;display: block;}	
+#onglet_departement {display: none;	}	
+#onglet_commune {display: none;	}	
+#onglet_epci {display: none;	}	
+#defaut {display: block;	}
+
+#logo_dep {
+	background-image: url("img/tabdep.png");
+	background-repeat:no-repeat;
+	background-position:center center;
+}
+
+#logo_dep:hover {
+	background-image: url("img/tabondep.png");
+	background-repeat:no-repeat;
+	background-position:center center;
+}
+
+#logo_epci {
+	background-image: url("img/tabepci.png");
+	background-repeat:no-repeat;
+	background-position:center center;
+}
+
+#logo_epci:hover {
+	background-image: url("img/tabonepci.png");
+	background-repeat:no-repeat;
+	background-position:center center;
+}
+
+#logo_com {
+	background-image: url("img/tabcom.png");
+	background-repeat:no-repeat;
+	background-position:center center;
+}
+
+#logo_com:hover {
+	background-image: url("img/taboncom.png");
+	background-repeat:no-repeat;
+	background-position:center center;
+}
+	
+.onglets{
+	background-color: #3c5daa;
+	border: 0.1px solid #5a77b7;
+}
+
+
+.onglets img{
+	vertical-align:middle;
+	padding:7px;
+}
+
+.onglets:hover {
+	color: #004494;
+	background-color: #ffee00;
+}
+
+.onglets_on a{
+	background-color: #f26664;
+	border : 0.1px solid #5a77b7;
+}
+
+		/*style des boutons*/
+
+.button_container {
+	width:100%;
+	margin-left: auto;
+	margin-right: auto;
+	}
+
+.bouton_maillage {
+	width:70%;
+	box-shadow: 0 0 5px rgba( 0, 0, 0, 0.5), 0 -1px 0 rgba( 255, 255, 255, 0.4);
+	padding: 4px;
+	margin: 4px;
+}
+
+#indicateur1{
+	background-color:#f4661d;
+}
+
+#indicateur2{
+	background-color:#00968c;
+}
+			
+.bouton {
+	display: inline-block;
+	width:40%;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 0.9em;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;	
+	margin:5px;
+	padding: 7px;
+	border-radius: 4px;
+	position: relative;
+	}
+		
+.bouton_off:hover {
+		color: #ffee00;
+		background-color: #5d78b8;
+		}
+		
+.bouton_on {
+		color: #fff;
+		border: solid 2px white;
+		}
+
+.bouton_off {
+		color: #fff;
+		cursor: pointer;
+		box-shadow: 0 0 5px rgba( 0, 0, 0, 0.5), 0 -1px 0 rgba( 255, 255, 255, 0.4);
+		}
+
+
+/*Style du tableau*/
+	
+.divTable{
+	display: table;
+	
+}
+.divTableRow {
+	display: table-row;	
+}
+
+.divTableCell, .divTableHead {
+	border: 0.1px solid #88a0b7;
+	vertical-align:middle;
+	padding: 7px 8px;
+}
+
+.divTableBody {
+	display: table-row-group;
+}
+
+.chiffre{
+	font-size:1.5em;
+	font-weight: bold;
+	color:#f26664;
+}
+
+.ptichiffre{
+	font-size:0.8em;
+	font-weight: bold;
+	color:#f26664;
+}
+
+.description {
+	font-size:0.8em;
+	font-weight: bold;
+	color:#ffffff;
+}

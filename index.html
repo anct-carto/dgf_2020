@@ -169,7 +169,7 @@
 	<script src="src/leaflet-search.js"></script>
     <script src="src/leaflet-sidebar.js"></script>
 	<script type="text/javascript" src="data/masque.js"></script>
-	<script type="text/javascript" src="data/geoData2019.js"></script>
+	<script type="text/javascript" src="data/geoData2020.js"></script>
 	<script type="text/javascript" src="data/cercles_drom.js"></script>
 	
     <script>
@@ -191,7 +191,7 @@
 /* COULEURS - STYLES - LEGENDE */
 		
 		//Fonctions de définition des couleurs
-		function getColor1(a,d) { //N1_EVO1718 indicateur 1
+		function getColor1(a,d) { //1_EVO1920 indicateur 1
 			if(a=="département") {
 				return 	d > 0.005 ? '#f4661d' : // augmentation // orange foncé 
 				d <= -0.005  ? '#fbd9c7' : // diminution // orange
@@ -206,7 +206,7 @@
 			}
 		}
 		
-		function getColor2(a,d) { //N4_VAR_RRF indicateur 2
+		function getColor2(a,d) { //4_VAR_RRF indicateur 2
 			if(a=="département") {
 				return 	d > 0.0005 ? '#00968c' : //augmentation // vert foncé '#ff4c4c'
 				d <= -0.0005  ? '#a7e3da' : //diminution // vert '#ffcccc'
@@ -223,7 +223,7 @@
 		
 		function style_indicateur1(feature) {
 			return {
-			fillColor: getColor1(feature.properties.TYPE, feature.properties.N1_EVO1718),
+			fillColor: getColor1(feature.properties.type, feature.properties.N1_EVO1920),
 			weight: 0.8,
 			opacity: 1,
 			color: 'white',
@@ -233,7 +233,7 @@
 		
 		function style_indicateur2(feature) {
 			return {
-			fillColor: getColor2(feature.properties.TYPE, feature.properties.N4_VAR_RRF),
+			fillColor: getColor2(feature.properties.type, feature.properties.N4_VAR_RRF),
 			weight: 0.8,
 			opacity: 1,
 			color: 'white',
@@ -264,7 +264,7 @@
 		Cache = L.geoJSON(JS_masque, {color: "#7183ab", weight: 0, opacity: 1, fillOpacity: 1}).addTo(map);
 		Cercles_drom = L.geoJSON(JS_drom, {color: "#ffffff", weight: 0.5, opacity: 0.7, fillOpacity: 0}).addTo(map);
 		Contour_Regions = L.geoJSON(JS_todo, {
-			filter: function(feature, layer) {return feature.properties.TYPE == "région";},
+			filter: function(feature, layer) {return feature.properties.type == "région";},
 			style: {interactive: false, color: "#ffffff", weight: 1.5, opacity: 1, pane:'territoireCible', fillOpacity: 0}
 		}).addTo(map);
 		
@@ -275,7 +275,7 @@
 		
 		//Départements
 		departement = L.geoJSON(JS_todo, {
-			filter: function(feature, layer) {return feature.properties.TYPE == "département";},
+			filter: function(feature, layer) {return feature.properties.type == "département";},
 			style: style_indicateur1,
 			onEachFeature: function(feature, layer) {
 					layer.bindTooltip(feature.properties.libgeo, {className: 'Tooltips', direction: "center", sticky:true});
@@ -289,7 +289,7 @@
 		
 		//EPCI
 		epci = L.geoJSON(JS_todo, {
-			filter: function(feature, layer) {return feature.properties.TYPE == "epci";},
+			filter: function(feature, layer) {return feature.properties.type == "epci";},
 			style: style_indicateur1,
 			onEachFeature: function(feature, layer) {
 					layer.bindTooltip(feature.properties.libgeo, {className: 'Tooltips', direction: "center", sticky:true});
@@ -316,7 +316,7 @@
 		
 		//Communes
 		commune = L.geoJSON(JS_todo, {
-			filter: function(feature, layer) {return feature.properties.TYPE == "commune";},
+			filter: function(feature, layer) {return feature.properties.type == "commune";},
 			style : {weight: 0.8, color: "#3e62a4", opacity: 1, fillOpacity: 1, fillColor:"#00bdce"},
 			onEachFeature: function(feature, layer) {
 					//layer.bindTooltip(feature.properties.libgeo, {className: 'Tooltips', direction: "center", sticky:true});
@@ -367,10 +367,10 @@
 			document.getElementById('bas').style.display = "none";
 			document.getElementById('haut').style.display = "none";
 			//Remplissage de la popup
-			document.getElementById('titre').innerHTML = "<h1 style='color:#f26664'>"+e.libgeo+"</h1><p>Les données concernant votre "+e.TYPE+"</p>";
-			document.getElementById('N1EVO').innerHTML = "<span>"+format1(e.N1_EVO1718*100)+"&nbsp;%</span>";
+			document.getElementById('titre').innerHTML = "<h1 style='color:#f26664'>"+e.libgeo+"</h1><p>Les données concernant votre "+e.type+"</p>";
+			document.getElementById('N1EVO').innerHTML = "<span>"+format1(e.N1_EVO1920*100)+"&nbsp;%</span>";
 			document.getElementById('N2MONTANT').innerHTML = "<span>"+format2(e.N2_MONTANT)+"&nbsp;€</span>";
-				if(e.TYPE=="epci"){document.getElementById('N2_DP').innerHTML = "<span>dont dotation d'intercommunalité&nbsp;&nbsp;:&nbsp;"+format2(e.N2_DP)+"&nbsp;€</span></br>";}
+				if(e.type=="epci"){document.getElementById('N2_DP').innerHTML = "<span>dont dotation d'intercommunalité&nbsp;&nbsp;:&nbsp;"+format2(e.N2_DP)+"&nbsp;€</span></br>";}
 				else {document.getElementById('N2_DP').innerHTML = "<span>dont dotation de péréquation&nbsp;&nbsp;:&nbsp;"+format2(e.N2_DP)+"&nbsp;€</span></br>";}
 			document.getElementById('N6PCTRRF').innerHTML = "<span>"+format1(e.N6_PCTRRF*100)+"&nbsp;%</span>";
 			document.getElementById('N3DGFHAB').innerHTML = "<span>"+format3(e.N3_DGFHAB)+"&nbsp;€</span>";
@@ -391,7 +391,7 @@
 			if(epciCib) {map.removeLayer(epciCib);}
 			//if(epciCib2) {map.removeLayer(epciCib2);}
 			if(territoireCib) {map.removeLayer(territoireCib);}
-			territoireCib = new L.polygon(e, {weight:2, color:"#1d3f73",pane:'territoireCible', fillOpacity: 0});
+			territoireCib = new L.polygon(e, {weight:3, color:"#ffee00",pane:'territoireCible', fillOpacity: 0});
 			territoireCib.addTo(map);
 		}
 		
@@ -400,7 +400,7 @@
 			if(territoireCib) {map.removeLayer(territoireCib);}
 			if(epciCib) {map.removeLayer(epciCib);}
 			if(epciCib2) {map.removeLayer(epciCib2);}
-			epciCib = new L.polygon(e, {weight:2, color:"#1d3f73",pane:'territoireCible', fillOpacity: 0, interactive:false});
+			epciCib = new L.polygon(e, {weight:3, color:"#ffee00",pane:'territoireCible', fillOpacity: 0, interactive:false});
 			epciCib.bindTooltip(nom, {className: 'epci_Tooltips', permanent:true, direction: 'center'});
 			epciCib.addTo(map).openTooltip();
 		}
@@ -410,8 +410,8 @@
 			if(epciCib) {map.removeLayer(epciCib);}
 			if(epciCib2) {map.removeLayer(epciCib2);}
 			epciCib2 = L.geoJSON(JS_todo, {
-				filter: function(feature, layer) {return  feature.properties.codgeo == e && feature.properties.TYPE == "epci"; },
-				style : {weight:2, color:"#1d3f73",pane:'territoireCible', fillOpacity: 0, interactive:false},
+				filter: function(feature, layer) {return  feature.properties.codgeo == e && feature.properties.type == "epci"; },
+				style : {weight:3, color:"#ffee00",pane:'territoireCible', fillOpacity: 0, interactive:false},
 				onEachFeature: function(feature, layer) {
 					layer.bindTooltip(feature.properties.libgeo, {className: 'epci_Tooltips', permanent:true, direction: 'center'});
 					}
@@ -601,7 +601,7 @@
 			
 			if (indicateur == "indicateur1"){
 			com_select = L.geoJSON(JS_todo, {
-				filter: function(feature, layer) {return  feature.properties.ID_EPCI == epci_cible && feature.properties.TYPE == "commune"; },
+				filter: function(feature, layer) {return  feature.properties.ID_EPCI == epci_cible && feature.properties.type == "commune"; },
 				style : style_indicateur1,
 				onEachFeature: function(feature, layer) {
 					layer.bindTooltip(feature.properties.libgeo, {className: 'Tooltips', direction: "center", sticky:true});
@@ -615,7 +615,7 @@
 			}
 			else if (indicateur == "indicateur2"){
 			com_select = L.geoJSON(JS_todo, {
-				filter: function(feature, layer) {return  feature.properties.ID_EPCI == epci_cible && feature.properties.TYPE == "commune"; },
+				filter: function(feature, layer) {return  feature.properties.ID_EPCI == epci_cible && feature.properties.type == "commune"; },
 				style : style_indicateur2,
 				onEachFeature: function(feature, layer) {
 					layer.bindTooltip(feature.properties.libgeo, {className: 'Tooltips', direction: "center", sticky:true});

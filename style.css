@@ -54,6 +54,14 @@ h3{
 	font-size:0.8em;
 	}
 
+.retour {
+	cursor: pointer;
+}
+
+.retour:hover {
+	color : #ffee00;
+}
+
 .Tooltips {
 	font-size:1.1em;
 	padding:4 4px;
